@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+movies.db
+uploads/*
+!uploads/.gitkeep
