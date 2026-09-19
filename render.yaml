@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: cinevault
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/data/movies.db
+    disk:
+      name: cinevault-data
+      mountPath: /var/data
+      sizeGB: 10
